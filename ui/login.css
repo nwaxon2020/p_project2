@@ -1,0 +1,149 @@
+body {
+    background-color: #646489;
+    background-image: url("/bg-image.avif");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode:multiply; 
+    height: 100vh; 
+    width: 100%; 
+    color:#ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.login{
+    text-align: center;
+    margin: 3rem auto;
+    background-color: rgba(0, 0, 0, 0.4);   
+    width: 100%;
+    max-width: 30rem;
+    padding: 2rem 0;
+}
+h2{
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.login div{
+    margin: 2rem auto;
+}
+.login button{
+    padding: 0.75rem 2rem;
+    background-color: #e6eaee;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: black;
+    width: 15rem;
+    font-family: cursive;
+    cursor: pointer;
+}
+.facebook-btn i{
+    color: rgb(51, 51, 208);
+    font-size: 20px;
+}
+.google-btn i{
+    color: red;
+}
+
+button:hover{
+    opacity: 0.7;
+}
+
+/* Logo styling============ */
+.lg-container{
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    gap: 10px;
+    text-align: left;
+    margin: 1rem;
+}
+.site-lg{
+    overflow: hidden;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border: 3px solid bisque;
+    border-radius: 50%;
+}
+.lg-container h1{
+    font-weight: 800;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: bisque;
+    margin: 1rem;
+    margin-left: -10px;
+    text-decoration: underline;
+}
+
+/* Screen Media 300px */
+@media (max-width: 700px) {
+    .login{
+        margin-top: 1rem; 
+        margin-bottom: 0px;  
+    }
+    .lg-container h1{
+        font-size: 1.2rem;
+    }
+    hr{
+        display: none;
+    }
+}
+
+/* ====SIGN UP STYLES=================================== */
+.signup input{
+    padding: 0.65rem;
+    margin: 1.5rem;
+    border: 2px solid #fff;
+    display: block;
+    border-radius: 10px;
+    width: 90%;
+    outline: none;
+    background-color: transparent;
+    color: #ffffff;
+}
+.signup{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.signup input:required{
+    border-left: 3px solid red;
+}
+.signup input:valid{
+    border-left: 4px solid green;
+}
+.profile-img-container input{
+    margin: -2.5rem auto;
+    margin-bottom: 2rem;
+    color: bisque;
+    width: 100px;
+    border: none;
+
+}
+.profile-img-container input:valid{
+    border: none;
+}
+.profile-img-hoder{
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #e6eaee;
+    overflow: hidden;
+}
+
+/* ==Flash Message Css */
+.flash-msg{
+    padding-inline: 1rem;
+    display: block;
+    background-color: #e6eaee;
+    color: #000;
+    font-weight: bolder;
+    text-align: center;
+}
+.err{
+    background-color: #6d2222;
+    color: #e6eaee;
+}

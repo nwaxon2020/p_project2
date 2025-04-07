@@ -1,0 +1,207 @@
+.logo-container{
+    padding: 5px;
+}
+.site-logo{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #757171;
+    overflow: hidden;
+}
+
+
+/* ===Nav Styling=================== */
+nav{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    align-items: end;
+    justify-items: center;
+    font-weight: 600;
+    background-color: var(--bg-colour);
+    overflow: hidden;
+}
+  
+.home-ui{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    justify-self: self-start;
+    padding-left: 2rem;
+  
+}
+.signout-ui{
+    justify-self: self-end;
+    padding-right: 2rem;
+}
+nav ul{
+    padding-left: 0;
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.hamburger{
+    display: none;
+}
+  
+.sidebar{
+    position: absolute;
+    width: 11rem; /* Sidebar width */
+    right: 0;
+    height: 75vh; /* Full height */
+    background-color: rgba(0,0,0, 0.8); /* Example background */
+    color: rgb(248, 238, 238);
+    font-family: cursive;
+    z-index: 3;
+    padding: 5px;
+    overflow: hidden;
+}
+.sidebar ul{
+    padding: 1rem 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 1.5rem;
+    list-style-type: none;
+    text-align: left;
+}
+.sidebar ul li{
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid #9999;  
+    padding: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.sidebar ul li:last-child{
+    border: none;
+}
+.aside-link{
+    width: 100%;
+}
+
+.signout-ui ul{
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Flash Message=============== */
+.flash-msg{
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+/* Image hoder for Profile------------- */
+.img-holder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+
+}
+.img-holder-big{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #757171;
+    border: 2px solid #fff;
+    text-align: center;
+    overflow: hidden;
+}
+.img-holder-small{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #757171;
+    border: 2px solid #fff;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* ----------------------------------------------- */
+@media (max-width: 700px) {
+    nav{
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .img-holder{
+        display: none;
+    }
+    .logo-container{
+        padding: 0px;
+    } 
+    .home-ui{
+        padding-left: 0px;
+    }
+    .home-ui ul, .dnt-display{
+        display: none;
+    }
+    .signout-ui{
+        display: flex;
+        justify-content: space-between;
+        padding: 0px;
+        gap: 3rem;
+        align-items: center;
+    }
+    .signout-ui ul{
+        padding: 0;
+    } 
+    .hamburger{
+        display: inline-block;
+    }    
+}
+   
+/* Animation for sideBar-------------- */
+@keyframes sliderIn {
+    from{
+      right: -300;
+    }
+    to{
+      right: 0;
+    }
+}
+@keyframes sliderOut {
+    from{
+      right: 0;
+    }
+    to{
+      right: -300;
+    }
+}
+  
+
+/* simple Loading=========== */
+
+.simple-loading{
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    border-top: 0.5px solid  black;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    border-radius: 50%;
+    animation: spiner 2s linear infinite;
+}
+
+@keyframes spiner {
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(360deg);
+    }
+}
+  
