@@ -7,7 +7,7 @@ import Credentials from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { MongoClient } from "mongodb";
 
-const client = new MongoClient(process.env.MONGO_URL!)
+const client = new MongoClient(process.env.MONGO_URL as string)
 const clientPromise = client.connect();
 
 export const authOptions: NextAuthOptions = {
@@ -30,10 +30,12 @@ export const authOptions: NextAuthOptions = {
                 email: {type: "email"},
                 password: {type: "password"}
             },
-            async authorize(credentials: any){
-                await ConnectDatabase();
-
+            async authorize(credentials:  Record<"email" | "password", string> | undefined){
+                
+                if (!credentials) throw new Error("Missing credentials");
                 const {email, password} = credentials;
+
+                await ConnectDatabase();
 
                 const userExist = await User.findOne({email})
                 if(!userExist){
@@ -67,6 +69,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     callbacks:{
+        
         async jwt({token, user}:{token:any ,user:any}){
             if(user){
                 token.id = user.id; 

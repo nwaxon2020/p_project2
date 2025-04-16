@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./login.css"
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { AxiosError } from "axios";
 
 
 export default function SignInUi(){
@@ -114,18 +115,23 @@ export default function SignInUi(){
                    
             }
             setLoading(false)
-        } catch (error:any) {
-            if (error.response && error.response.data) {
+        } catch (error: unknown) {
+            if (error instanceof AxiosError && error.response) {
                 setError(error.response.data.error || "An unknown error occurred");
-                setTimeout(()=>{
-                    setError("")
-                }, 6000)
-            } else {
+                setTimeout(() => {
+                    setError("");
+                }, 6000);
+            } else if (error instanceof Error) {
                 setError("SERVER DOWN.....🌍");
-                console.log("SERVER ERROR: ", error)
-                setTimeout(()=>{
-                    setError("")
-                }, 5000)
+                console.error("SERVER ERROR:", error.message);
+                setTimeout(() => {
+                    setError("");
+                }, 5000);
+            } else {
+                setError("Unexpected error occurred.");
+                setTimeout(() => {
+                    setError("");
+                }, 5000);
             }
 
         }finally{

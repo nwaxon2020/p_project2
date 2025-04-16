@@ -12,7 +12,7 @@ export default async function ConnectDatabase() {
 
         console.log("Database Connected Successfully ✔✔✔")
 
-    } catch (error:any) {
+    } catch (error) {
         console.log("There was a problem connecting Database ❌", error)
     }
 }

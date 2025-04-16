@@ -39,8 +39,11 @@ export async function POST(req:NextRequest) {
         return NextResponse.json({message: "Account created successfully ✔"})
 
 
-    } catch (error:any) {
-        console.log("error: ",error)
-        NextResponse.json({error: error.message},{status: 500})
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ error: error.message }, { status: 500 });
+        } else {
+            return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
+        }
     }
 }
