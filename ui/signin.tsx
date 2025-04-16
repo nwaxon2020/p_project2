@@ -16,6 +16,9 @@ export default function SignInUi(){
     const [sucessMsg, setSucessMsg] = useState("")
     const [error, setError] = useState("")
 
+    //Move the image file setter
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
+
     //form data setting variable
     const [formData, setFormData] = useState({
         username: "",
@@ -37,48 +40,92 @@ export default function SignInUi(){
         })
     }
 
-    //function to handle profile image
-    function handleProfileImage(e:React.ChangeEvent<HTMLInputElement>){
-        const file = e.target.files?.[0]
-        if(file){
-            const objectImg = URL.createObjectURL(file)
 
-            //set the user details plus profile picture for posting
-            setFormData((prev) =>{
-                return{
-                    ...prev,
-                    profilePic: objectImg
-                }
-            })
+
+    //function to handle profile image
+    const maxSize = 1.5 * 1024 * 1024 //Imagae max size 10mb
+
+    async function handleProfileImage(e:React.ChangeEvent<HTMLInputElement>){
+        const file = e.target.files?.[0]
+        
+        if(file){
+            if(file.size > maxSize) {
+                setError("Image too large...Image cannot be more than 1.5MB")
+                setTimeout(()=>{
+                    setError("")
+                }, 5000)
+
+                return
+            }
+
+            setSelectedFile(file)
+            
+            const image = URL.createObjectURL(file)
+            setFormData((prev)=> ({...prev, profilePic: image}))
         }
     }
+
+    //Handle submit function
     async function handleSubmitSIgnup(e: React.FormEvent<HTMLFormElement>){
+        //Prevent Page reload
+        e.preventDefault()
+
         //initialise all flash mesage reports
         setSucessMsg("");
         setError("")
         setLoading(true)
 
-        //Prevent Page reload
-        e.preventDefault()
+        //initiate clousinary formData
+        const {data} = await axios.post("/api/cloudinary_api")
+        const {timestamp, signature, api_key} = data
 
-        try {
+        let cloudinaryImage = ""
+
+        if(selectedFile){
+            const uploadImageForm = new FormData()
+            uploadImageForm.append("file", selectedFile)
+            uploadImageForm.append("timestamp", timestamp)
+            uploadImageForm.append("api_key", api_key)
+            uploadImageForm.append("signature", signature)
+            uploadImageForm.append("transformation","c_crop,g_face,w_400,h_400,r_max")
+
+            const res = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, uploadImageForm)
+            cloudinaryImage = res.data.secure_url
+            console.log(cloudinaryImage)
+        }
+
+        try {  
+
+            //passing the cloudinary image into a new object so it can be reflext before image uploads
+            const CompletedFormdata =  {...formData, profilePic: cloudinaryImage}
+
             //pust form data info into database with Axios
-            const {data} = await axios.post("/api/signup", formData)
+            if(!error){
+                const {data} = await axios.post("/api/signup", CompletedFormdata)
 
-            setFormData({username:"",email:"", password:"", profilePic:""})
+                setFormData({username:"",email:"", password:"", profilePic:""})
 
-            window.scrollTo({top: 0, behavior: "smooth"})
-            setSucessMsg(data.message)   
-
-            setTimeout(()=>{
-                router.push("/")
-            },2000)
-               
+                window.scrollTo({top: 0, behavior: "smooth"})
+                setSucessMsg(data.message)   
+    
+                setTimeout(()=>{
+                    router.push("/")
+                },2000)
+                   
+            }
+            setLoading(false)
         } catch (error:any) {
             if (error.response && error.response.data) {
                 setError(error.response.data.error || "An unknown error occurred");
+                setTimeout(()=>{
+                    setError("")
+                }, 6000)
             } else {
-                setError(error.message || "An unknown error occurred");
+                setError("SERVER DOWN.....🌍");
+                console.log("SERVER ERROR: ", error)
+                setTimeout(()=>{
+                    setError("")
+                }, 5000)
             }
 
         }finally{

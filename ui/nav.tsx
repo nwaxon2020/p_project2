@@ -64,7 +64,7 @@ export function Nav(){
                         <li className="hover:text-sky-400 transition" style={{cursor:"pointer"}}><i className="fa fa-shopping-cart" style={{fontSize:"25px", color: "ffffff"}}></i></li>                       
                         <li className="dnt-display hover:text-sky-400 transition"><div style={{cursor:"pointer"}} onClick={()=> signOut()}>Sign Out</div></li>
                         <div className="img-holder">
-                            <div className="img-holder-big"><img src={  profilePic || "/default-profile.jpg"} alt="User Profile" /></div>
+                            <div className="img-holder-big"><img src={  profilePic || "/default-profile.png"} alt="User Profile" /></div>
                             <h3 style={{color: "goldenrod", fontSize:"0.8rem"}}>{ username}</h3>
                         </div>
                     </ul>

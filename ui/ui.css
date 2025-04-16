@@ -117,6 +117,9 @@ nav ul{
     background-color: #757171;
     border: 2px solid #fff;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 .img-holder-small{
@@ -127,7 +130,15 @@ nav ul{
     border: 2px solid #fff;
     overflow: hidden;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.img-holder-big img, .img-holder-small img{
+    width: 100%;
+    height: 50px;
+}
+
 
 /* ----------------------------------------------- */
 @media (max-width: 700px) {

@@ -41,14 +41,6 @@ export default function LogInUi(){
             redirect: false,
         })
         if(res?.error){
-            if(res.error !== "Email not Found....Please " && res.error !== "Wrong Password..."){
-                
-                setLoading(false)
-                setError("SERVER DOWN 🌍....TRY AGAIN LATTER")
-                setTimeout(()=>{
-                    setError("")
-                }, 6000)
-            }
             setLoading(false)
             setError(res.error)
             setTimeout(()=>{
@@ -74,6 +66,7 @@ export default function LogInUi(){
             </div><hr />
             {msg && <p className="flash-msg">{msg}</p>}
             {error && <p className="flash-msg err">{error}{error === "Email not Found....Please " && <Link style={{color:"goldenrod", textDecoration:"underline", fontWeight:"bold"}} href={"/signup"}>Sign Up</Link>}</p>}
+
             <form className="signup" onSubmit={handleSubmitSIgnup}>               
                 <div className="login">
                     <input type="email" name="email" required placeholder="Email@" onChange={handleOnChange} value={formData.email}/>
