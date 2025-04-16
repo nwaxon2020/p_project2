@@ -1,5 +1,6 @@
 import Google from "next-auth/providers/google";
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, Session, User as Users } from "next-auth";
+import type { JWT } from "next-auth/jwt";
 import ConnectDatabase from "@/lib/database";
 import { User } from "@/models/schemas";
 import bcrypt from "bcryptjs";
@@ -70,7 +71,7 @@ export const authOptions: NextAuthOptions = {
 
     callbacks:{
         
-        async jwt({token, user}:{token:any ,user:any}){
+        async jwt({token, user}:{ token: JWT; user?: Users }){
             if(user){
                 token.id = user.id; 
                 token.email = user.email; 
@@ -79,7 +80,7 @@ export const authOptions: NextAuthOptions = {
             }
             return token
         },
-       async session({session, token} : {session:any, token:any}){
+       async session({session, token} : {session:Session, token: JWT}){
             if(token.id){
                 session.user.id = token.id;
                 session.user.email = token.email;
