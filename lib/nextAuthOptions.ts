@@ -29,7 +29,7 @@ export const authOptions: NextAuthOptions = {
             name: "Credentials",
             credentials: {
                 email: {type: "email"},
-                password: {type: "password"}
+                password: {type: "password"},
             },
             async authorize(credentials:  Record<"email" | "password", string> | undefined){
                 
@@ -81,7 +81,7 @@ export const authOptions: NextAuthOptions = {
             return token
         },
        async session({session, token} : {session:Session, token: JWT}){
-            if(token.id){
+            if(token?.id){
                 session.user.id = token.id;
                 session.user.email = token.email;
                 session.user.name = token.name;
