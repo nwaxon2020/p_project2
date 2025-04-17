@@ -21,9 +21,16 @@ export const authOptions: NextAuthOptions = {
 
     providers:[
         Google({
-            clientId: process.env.CLIENT_ID as string,
-            clientSecret: process.env.CLIENT_SECRETE as string,
-        }),
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            authorization: {
+              params: {
+                prompt: "consent",
+                access_type: "offline",
+                response_type: "code"
+              }
+            }
+          }),
 
         Credentials({
             name: "Credentials",
@@ -91,11 +98,6 @@ export const authOptions: NextAuthOptions = {
             return session
        }
     },
-
-    pages: {
-        signIn: "/login",
-        newUser: "/", // 👈 This is the magic for Google login!
-    },
-
+    
     secret: process.env.NEXTAUTH_SECRET,
 }
