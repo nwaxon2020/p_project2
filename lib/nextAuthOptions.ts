@@ -92,5 +92,10 @@ export const authOptions: NextAuthOptions = {
        }
     },
 
+    pages: {
+        signIn: "/login",
+        newUser: "/", // 👈 This is the magic for Google login!
+    },
+
     secret: process.env.NEXTAUTH_SECRET,
 }
