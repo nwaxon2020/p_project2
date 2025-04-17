@@ -44,14 +44,14 @@ export default function SignInUi(){
 
 
     //function to handle profile image
-    const maxSize = 1.5 * 1024 * 1024 //Imagae max size 10mb
+    const maxSize = 10 * 1024 * 1024 //Imagae max size 10mb
 
     async function handleProfileImage(e:React.ChangeEvent<HTMLInputElement>){
         const file = e.target.files?.[0]
-        
+        e.target.value = "";
         if(file){
             if(file.size > maxSize) {
-                setError("Image too large...Image cannot be more than 1.5MB")
+                setError("Image too large...Image cannot be more than 10MB")
                 setTimeout(()=>{
                     setError("")
                 }, 5000)
