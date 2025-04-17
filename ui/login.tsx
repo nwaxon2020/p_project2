@@ -79,7 +79,7 @@ export default function LogInUi(){
                             </div>
                             <div>
                                 <p className="my-2">Don't have an account? <Link href={"/signup"} className="underline font-semibold p-[5px]" style={{ color:"bisque"}}>Sign Up</Link></p>
-                                {<button className="google-btn" onClick={() => {setLoading(true) ,signIn("google") }}><i className="fa fa-google"></i>oogle</button>}
+                                {<button className="google-btn" onClick={() => {setLoading(true) ,signIn("google", {callbackUrl: "/"}) }}><i className="fa fa-google"></i>oogle</button>}
                             </div>
                         </>
                     }
