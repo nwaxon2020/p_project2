@@ -12,9 +12,6 @@ const client = new MongoClient(process.env.MONGO_URL as string)
 const clientPromise = client.connect();
 
 export const authOptions: NextAuthOptions = {
-    pages:{
-        newUser: "/",
-    },
 
     session:{
         strategy: "jwt",
