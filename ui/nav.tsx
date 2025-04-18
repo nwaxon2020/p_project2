@@ -76,7 +76,7 @@ export function Nav(){
             </nav><hr />
             
             {
-                togleSidebar && <div className="sidebar" style={{animation: "sliderIn 1s ease-in-out"}}>
+                togleSidebar && <div className="sidebar">
                     <ul>
                         <div style={{marginLeft:"10px",width:"100%", display:"flex", flexDirection:"column", justifyContent:"center",alignItems:"flex-start", gap:"10px"}}>
                             <div className="img-holder-small"><img src={session?.user?.image || "/default-profile.png"} alt="User Profile" /></div>
