@@ -142,9 +142,6 @@ nav ul{
 
 /* ----------------------------------------------- */
 @media (max-width: 700px) {
-    .sidebar{
-        animation: sliderIn 2s ease forwards;
-    }
     nav{
       padding: 0.75rem 1.5rem;
       display: flex;
@@ -180,20 +177,33 @@ nav ul{
    
 /* Animation for sideBar-------------- */
 @keyframes sliderIn {
-    from{
-      right: -300;
+    from {
+      right: -300px;
+      opacity: 0;
     }
-    to{
+    to {
       right: 0;
+      opacity: 1;
     }
 }
+  
 @keyframes sliderOut {
-    from{
+    from {
       right: 0;
+      opacity: 1;
     }
-    to{
-      right: -300;
+    to {
+      right: -300px;
+      opacity: 0;
     }
+}
+  
+.slide-in {
+animation: sliderIn 0.4s ease forwards;
+}
+
+.slide-out {
+animation: sliderOut 0.4s ease forwards;
 }
   
 
