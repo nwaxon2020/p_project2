@@ -95,7 +95,7 @@ export function Nav() {
             <hr />
 
             {togleSidebar && (
-                <div className={`sidebar ${animateSidebar ? "slide-in" : "pre-slide"}`}>
+                <div className={`sidebar ${animateSidebar ? "slide-in" : "pre-slide slide-out"}`}>
                     <ul>
                         <div style={{ marginLeft: "10px", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: "10px" }}>
                             <div className="img-holder-small">
