@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
 
     session:{
         strategy: "jwt",
-        maxAge: 3 * 24 * 60 * 60,
+        maxAge: 30 * 24 * 60 * 60,
     },
     
     adapter: MongoDBAdapter(clientPromise),
@@ -24,14 +24,6 @@ export const authOptions: NextAuthOptions = {
         Google({
             clientId: process.env.CLIENT_ID as string,
             clientSecret: process.env.CLIENT_SECRETE as string,
-            profile(profile) {
-                return {
-                  id: profile.sub,
-                  name: profile.name,
-                  email: profile.email,
-                  image: profile.picture,
-                }
-            }
         }),
 
         Credentials({
@@ -90,21 +82,14 @@ export const authOptions: NextAuthOptions = {
             return token
         },
        async session({session, token} : {session:Session, token: JWT}){
-            // if(token?.id){
-            //     session.user.id = token.id;
-            //     session.user.email = token.email;
-            //     session.user.name = token.name;
-            //     session.user.image = token.image
-            // }
+            if(token?.id){
+                session.user.id = token.id;
+                session.user.email = token.email;
+                session.user.name = token.name;
+                session.user.image = token.image
+            }
 
-            // return session
-            session.user = {
-                id: token.id,
-                name: token.name,
-                email: token.email,
-                image: token.image,
-            };
-            return session;
+            return session
        }
     },
 
