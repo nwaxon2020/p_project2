@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
 
     session:{
         strategy: "jwt",
-        maxAge: 30 * 60 * 24,
+        maxAge: 3 * 24 * 60 * 60,
     },
     
     adapter: MongoDBAdapter(clientPromise),
