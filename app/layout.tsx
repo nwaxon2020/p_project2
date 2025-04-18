@@ -33,7 +33,11 @@ export default async function RootLayout({children,}: Readonly<{children: React.
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 
-        <SessionProvider session={session}>       
+        <SessionProvider 
+          session={session}
+          refetchInterval={60 * 60} // Refresh session every hour
+          refetchOnWindowFocus={true}
+        >       
           <main>
             <PathName/>
             {children}
