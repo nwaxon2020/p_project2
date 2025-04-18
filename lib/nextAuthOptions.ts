@@ -24,6 +24,11 @@ export const authOptions: NextAuthOptions = {
         Google({
             clientId: process.env.CLIENT_ID as string,
             clientSecret: process.env.CLIENT_SECRET as string,
+            authorization: {
+                params: {
+                  scope: "openid email profile",
+                },
+            },
         }),
 
         Credentials({
@@ -47,7 +52,7 @@ export const authOptions: NextAuthOptions = {
                 if(password.length < 8 || !validPassword){
                     throw new Error("Wrong Password...")
                 }
-                
+
                 console.log("Authorized User:", {
                     id: userExist._id, 
                     email: userExist.email, 
@@ -80,19 +85,19 @@ export const authOptions: NextAuthOptions = {
         
         async jwt({token, user}:{ token: JWT; user?: Users }){
             if(user){
-                token.id = user.id; 
-                token.email = user.email; 
-                token.name = user.name; 
-                token.image = user.image
+                token.id = user.id || "Unknown"; // depending on source
+                token.email = user.email || "";
+                token.name = user.name || "User";
+                token.image = user.image || "/default-profile.png";
             }
             return token
         },
        async session({session, token} : {session:Session, token: JWT}){
             if(token?.id){
-                session.user.id = token.id;
-                session.user.email = token.email;
-                session.user.name = token.name;
-                session.user.image = token.image
+                session.user.id = token.id as string;
+                session.user.email = token.email || "";
+                session.user.name = token.name || "User";
+                session.user.image = token.image || "/default-profile.png";
             }
 
             return session
