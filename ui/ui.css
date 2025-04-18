@@ -176,6 +176,12 @@ nav ul{
 }
    
 /* Animation for sideBar-------------- */
+.pre-slide {
+    opacity: 0;
+    right: -300px;
+    position: fixed;
+}
+
 @keyframes sliderIn {
     from {
       right: -300px;
@@ -205,7 +211,8 @@ animation: sliderIn 0.4s ease forwards;
 .slide-out {
 animation: sliderOut 0.4s ease forwards;
 }
-  
+
+
 
 /* simple Loading=========== */
 
