@@ -4,9 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export default async function middleware(req:NextRequest) {
     const token = await getToken({req}) 
     const path = req.nextUrl.pathname;
-    if (path.startsWith("/api/auth/")) {
-        return NextResponse.next();
-    }
+
     const routers = ["/","/trending","/contact","/videos"].includes(path)
 
         if (routers && !token) {
