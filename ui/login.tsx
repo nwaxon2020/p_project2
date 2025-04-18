@@ -47,12 +47,12 @@ export default function LogInUi(){
                 setError("")
             }, 6000)
         }else{
-            window.location.href = "/";
-            // window.scrollTo({top: 0, behavior: "smooth"})
-            // setMsg("Log In Sucessful ✔")
-            // setTimeout(()=>{
-            //     router.push("/")
-            // }, 2000)
+            
+            window.scrollTo({top: 0, behavior: "smooth"})
+            setMsg("Log In Sucessful ✔")
+            setTimeout(()=>{
+                window.location.href = "/";
+            }, 2000)
         }
     }
 
