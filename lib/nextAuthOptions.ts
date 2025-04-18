@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
     providers:[
         Google({
             clientId: process.env.CLIENT_ID as string,
-            clientSecret: process.env.CLIENT_SECRETE as string,
+            clientSecret: process.env.CLIENT_SECRET as string,
         }),
 
         Credentials({
@@ -47,7 +47,13 @@ export const authOptions: NextAuthOptions = {
                 if(password.length < 8 || !validPassword){
                     throw new Error("Wrong Password...")
                 }
-
+                
+                console.log("Authorized User:", {
+                    id: userExist._id, 
+                    email: userExist.email, 
+                    name: userExist.username, 
+                    image: userExist.profilePic
+                });
                 return {
                     id: userExist._id, 
                     email: userExist.email, 
