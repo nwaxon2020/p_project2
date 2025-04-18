@@ -66,7 +66,7 @@ export function Nav() {
                 <div className="signout-ui">
                     <ul>
                         <li className={path === "/contact" ? "dnt-display active" : "dnt-display hover:text-sky-400 transition"}>
-                            <Link href={"/contact"}>Contact</Link>
+                            <Link href={"/contact"}>Contact Us</Link>
                         </li>
                         <li className="hover:text-sky-400 transition" style={{ cursor: "pointer" }}>
                             <i className="fa fa-shopping-cart" style={{ fontSize: "25px", color: "ffffff" }}></i>
@@ -113,7 +113,7 @@ export function Nav() {
                             <Link href={"/trending"}>Trending</Link>
                         </li>
                         <li className={path === "/contact" ? "active" : ""} onClick={() => handleHandburger()}>
-                            <Link href={"/contact"}>Contact</Link>
+                            <Link href={"/contact"}>Contact Us</Link>
                         </li>
                         <li>
                             <div onClick={() => signOut()}>Sign Out</div>
