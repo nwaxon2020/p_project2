@@ -46,18 +46,19 @@ export default function Policy(){
             </ul>
 
             <h3 className="text-l font-semibold text-gray-800 mb-4">4. Data Retention</h3>
-            <p className="text-base text-gray-700 mb-4">Since we do not store personal data in our database, any information you share via the Google or Facebook login will only be used during your session to personalize your experience. Once you log out, this data is no longer retained, Nevertheless, to know more about Data-Deletion, <br />please visit: <Link className='font-bold text-red-600 hover:text-red-800 px-2 underline' href={"/policies/data-deletion"}>Data-Deletion</Link> page.</p>
+            <p className="text-base text-gray-700 mb-4">Since we do not store personal data in our database, any information you share via the Google or Facebook login will only be used during your session to personalize your experience. Once you log out, this data is no longer retained.</p>
 
             <h3 className="text-l font-semibold text-gray-800 mb-3">5. Cookies</h3>
             <p className="text-base text-gray-700 mb-4">Our website may use <strong>cookies</strong> to enhance the user experience. Cookies are small files stored on your device that allow us to remember your preferences, login status, and other settings. You can control the use of cookies through your browser settings.</p>
 
             <h3 className="text-l font-semibold text-gray-800 mb-4">6. Data Deletion</h3>
             <p className="text-base text-gray-700 mb-4">Since we do not store your data, there is no need for explicit data deletion. However, if you wish to revoke permissions or delete your account from Google or Facebook, you can manage this through their respective settings.</p>
-            <p className="text-base text-gray-700 mb-6">To manage your Facebook and Google account data, please refer to their privacy settings and options for deleting your data:</p>
+            <p className="text-base text-gray-700 mb-4">To manage your Facebook and Google account data, please refer to their privacy settings and options for deleting your data:</p>
             <ul className="list-none pl-6 text-base text-gray-700 mb-4">
                 <li><a href="https://myaccount.google.com/" target="_blank" className="text-blue-600 hover:underline">Google Account Settings</a></li>
                 <li><a href="https://www.facebook.com/settings" target="_blank" className="text-blue-600 hover:underline">Facebook Settings</a></li>
             </ul>
+            <p className="text-base text-gray-700 mb-6">Need Help to know more about Data-Deletion? <br />please visit: <Link className='font-bold text-red-600 hover:text-red-800 px-2 underline' href={"/policies/data-deletion"}>Data-Deletion</Link> page.</p>
 
             <h3 className="text-l font-semibold text-gray-800 mb-2">7. Security</h3>
             <p className="text-base text-gray-700 mb-6">We take reasonable steps to protect your information from unauthorized access or disclosure. However, as we do not store sensitive data, the responsibility for securing your personal data lies with the third-party services (Google and Facebook) that authenticate you.</p>
