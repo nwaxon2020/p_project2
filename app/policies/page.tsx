@@ -14,7 +14,7 @@ export default function Policy(){
     }, []);
 
     return(
-        <div className="max-w-6xl mx-auto px-4 py-8 bg-gray-300 mb-[-1.5rem]">
+        <div className="max-w-6xl mx-auto px-4 py-8 bg-gray-300 ">
             <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">Privacy Policy</h1>
             <p className="text-sm text-center text-gray-800 mb-4"><strong style={{color: "goldenrod"}}>Last updated:{lastUpdated}</strong></p><hr />
 
@@ -46,7 +46,7 @@ export default function Policy(){
             </ul>
 
             <h3 className="text-l font-semibold text-gray-800 mb-4">4. Data Retention</h3>
-            <p className="text-base text-gray-700 mb-4">Since we do not store personal data in our database, any information you share via the Google or Facebook login will only be used during your session to personalize your experience. Once you log out, this data is no longer retained, Never the less if you wish to delete your data from the services mentioned, please visit this site<Link className='font-bold hover:text-gray-500 px-2 underline' href={"/policies/data-deletion"}>How To Delete Account</Link></p>
+            <p className="text-base text-gray-700 mb-4">Since we do not store personal data in our database, any information you share via the Google or Facebook login will only be used during your session to personalize your experience. Once you log out, this data is no longer retained, Nevertheless, to know more about Data-Deletion, <br />please visit: <Link className='font-bold text-red-600 hover:text-red-800 px-2 underline' href={"/policies/data-deletion"}>Data-Deletion</Link> page.</p>
 
             <h3 className="text-l font-semibold text-gray-800 mb-3">5. Cookies</h3>
             <p className="text-base text-gray-700 mb-4">Our website may use <strong>cookies</strong> to enhance the user experience. Cookies are small files stored on your device that allow us to remember your preferences, login status, and other settings. You can control the use of cookies through your browser settings.</p>
@@ -63,7 +63,7 @@ export default function Policy(){
             <p className="text-base text-gray-700 mb-6">We take reasonable steps to protect your information from unauthorized access or disclosure. However, as we do not store sensitive data, the responsibility for securing your personal data lies with the third-party services (Google and Facebook) that authenticate you.</p>
 
             <h3 className="text-l font-semibold text-gray-800 mb-2">8. Changes to This Privacy Policy</h3>
-            <p className="text-base text-gray-700 mb-6">We may update our privacy policy from time to time. Any changes will be posted on this page, and we will update the "Last updated" date above. We encourage you to review this policy periodically to stay informed about how we are protecting your information.</p>
+            <p className="text-base text-gray-700 mb-6">We may update our privacy policy from time to time. Any changes will be posted on this page, and we will update the &quot;Last updated&quot; date above. We encourage you to review this policy periodically to stay informed about how we are protecting your information.</p>
 
             <h3 className="text-l font-semibold text-gray-800 mb-2">9. Contact Us</h3>
             <p className="text-base text-gray-700 mb-4">If you have any questions or concerns about this Privacy Policy, please contact us at:</p>

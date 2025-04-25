@@ -14,7 +14,7 @@ export default function DataDeletionPage() {
         </p>
         <ol className="list-none pl-6 text-gray-700 mb-6">
           <li>Go to <a href="https://myaccount.google.com/" target="_blank" className="text-blue-600 hover:underline">Google Account Settings</a></li>
-          <li>Click on "Data & Privacy" and navigate to "Manage Your Data & Personalization."</li>
+          <li>Click on &quot;Data & Privacy&quot; and navigate to &quot;Manage Your Data & Personalization.&quot;</li>
           <li>Follow the steps to delete any data related to your Google account.</li>
         </ol>
   
@@ -24,7 +24,7 @@ export default function DataDeletionPage() {
         </p>
         <ol className="list-none pl-6 text-gray-700 mb-6">
           <li>Go to <a href="https://www.facebook.com/settings" target="_blank" className="text-blue-600 hover:underline">Facebook Settings</a></li>
-          <li>Navigate to "Your Facebook Information" and select "Delete Your Account and Information."</li>
+          <li>Navigate to &quot;Your Facebook Information&quot; and select &quot;Delete Your Account and Information.&quot;</li>
           <li>Follow the prompts to delete your data.</li>
         </ol>
   
