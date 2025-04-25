@@ -1,15 +1,8 @@
 import Google from "next-auth/providers/google";
-import { NextAuthOptions, Session, User as Users } from "next-auth";
+import Facebook from "next-auth/providers/facebook";
+import { NextAuthOptions, Session, User } from "next-auth";
 import type { JWT } from "next-auth/jwt";
-import ConnectDatabase from "@/lib/database";
-import { User } from "@/models/schemas";
-import bcrypt from "bcryptjs";
-import Credentials from "next-auth/providers/credentials";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import { MongoClient } from "mongodb";
 
-const client = new MongoClient(process.env.MONGO_URL as string)
-const clientPromise = client.connect();
 
 export const authOptions: NextAuthOptions = {
 
@@ -17,51 +10,16 @@ export const authOptions: NextAuthOptions = {
         strategy: "jwt",
         maxAge: 30 * 24 * 60 * 60,
     },
-    
-    adapter: MongoDBAdapter(clientPromise),
 
     providers:[
         Google({
             clientId: process.env.CLIENT_ID as string,
             clientSecret: process.env.CLIENT_SECRET as string,
-        }),
-
-        Credentials({
-            name: "Credentials",
-            credentials: {
-                email: {type: "email"},
-                password: {type: "password"},
-            },
-            async authorize(credentials:  Record<"email" | "password", string> | undefined){
-                
-                if (!credentials) throw new Error("Missing credentials");
-                const {email, password} = credentials;
-
-                await ConnectDatabase();
-
-                const userExist = await User.findOne({email})
-                if(!userExist){
-                    throw new Error("Email not Found....Please ")
-                }
-                const validPassword = await bcrypt.compare(password, userExist.password)
-                if(password.length < 8 || !validPassword){
-                    throw new Error("Wrong Password...")
-                }
-                
-                console.log("Authorized User:", {
-                    id: userExist._id, 
-                    email: userExist.email, 
-                    name: userExist.username, 
-                    image: userExist.profilePic
-                });
-                return {
-                    id: userExist._id, 
-                    email: userExist.email, 
-                    name: userExist.username, 
-                    image: userExist.profilePic
-                }
-            }
-        }),
+        }),   
+        Facebook({
+            clientId: process.env.FCAEBOOK_APP_ID as string,
+            clientSecret: process.env.FACEBOOK_APP_SECRET as string,
+        })
     ],
 
     cookies:{
@@ -78,7 +36,7 @@ export const authOptions: NextAuthOptions = {
 
     callbacks:{
         
-        async jwt({token, user}:{ token: JWT; user?: Users }){
+        async jwt({token, user}:{ token: JWT; user?: User }){
             if(user){
                 token.id = user.id; 
                 token.email = user.email; 

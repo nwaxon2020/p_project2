@@ -1,8 +1,9 @@
 "use client"
 
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import "./ui.css"
+import Link from "next/link";
 
 export function Footer(){
     const path = usePathname();
@@ -18,22 +19,14 @@ export function Footer(){
                                         <li><a href="/" className="hover:text-sky-400 transition">Home</a></li>
                                         <li><a href="#" className="hover:text-sky-400 transition">Videos</a></li>
                                         <li><a href="/trending" className="hover:text-sky-400 transition">Trending</a></li>
+
                                         {
-                                            path === "/login" && <li style={{cursor:"pointer"}}>
-                                            {
-                                                path === "/login"? 
-                                                <a className="hover:text-sky-400 transition" href="/signup">Sign Up</a> : 
-                                                <a className="hover:text-sky-400 transition" onClick={()=> signOut()}>Sign Out</a>
-                                            }
-                                            </li>
-                                        }
-                                        {
-                                            path === "/signup" && <li style={{cursor:"pointer"}}>
+                                            path.startsWith("/policies") && <li style={{cursor:"pointer"}}>
                                                 <a className="hover:text-sky-400 transition" href="/login">Sign In</a>       
                                             </li>
                                         }
                                         {
-                                            path !== "/login" && path !== "/signup" && <li style={{cursor:"pointer"}}>
+                                            path !== "/login" && !path.startsWith("/policies") && <li style={{cursor:"pointer"}}>
                                         
                                                 <a className="hover:text-sky-400 transition" onClick={()=> signOut()}>Sign Out</a>
                                             
@@ -79,8 +72,7 @@ export function Footer(){
                                     <span className="block text-gray-300" style={{fontWeight: "800", fontStyle: "italic"}}>Nomo Phones &copy; 2021</span>
 
                                     <span className="flex justify-between text-white"> 
-                                        <a href="#" className="font-semibold">Terms of Use </a>
-                                        <a href="#" className="font-semibold"> Privacy Policy</a> 
+                                        <Link href="/policies" className="font-semibold"> Privacy Policy</Link> 
                                     </span>
 
                                     <span className="block text-gray-300">Need help? <a href="#" className="font-semibold text-white"> Contact Us</a></span>

@@ -129,7 +129,6 @@ export function Nav() {
 }
 
 export function PathName() {
-  const pathname = usePathname();
-
-  return pathname.includes("/login") || pathname.includes("/signup") ? <></> : <Nav />;
+    const pathname = usePathname();
+    return ["/login", "/policies", "/policies/data-deletion"].includes(pathname) ? <></> : <Nav />;
 }
