@@ -71,7 +71,7 @@ export function Footer(){
 
                                     <span className="block text-gray-300" style={{fontWeight: "800", fontStyle: "italic"}}>Nomo Phones &copy; 2021</span>
 
-                                    <span className="flex justify-between text-white"> 
+                                    <span className="block text-white"> 
                                         <Link href="/policies" className="font-semibold"> Privacy Policy</Link> 
                                     </span>
 
