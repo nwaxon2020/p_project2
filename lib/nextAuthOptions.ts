@@ -15,18 +15,10 @@ export const authOptions: NextAuthOptions = {
         Google({
             clientId: process.env.CLIENT_ID as string,
             clientSecret: process.env.CLIENT_SECRET as string,
-            authorization: {
-                params: {
-                  redirect_uri: 'https://nomophonez.vercel.app/api/auth/callback/google',  // Add the exact URI here
-                }}
         }),   
         Facebook({
             clientId: process.env.FCAEBOOK_APP_ID as string,
             clientSecret: process.env.FACEBOOK_APP_SECRET as string,
-            authorization: {
-                params: {
-                  redirect_uri: 'https://nomophonez.vercel.app/api/auth/callback/facebook',  // Add the exact URI here
-                }}
         })
     ],
 
